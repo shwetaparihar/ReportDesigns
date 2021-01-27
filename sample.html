@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://localhost:8900/iportal/jsapi"></script>
+
+
+
+<script language="javascript" >
+  
+	
+	  function dashboardInit() {
+		actuate.load("viewer");
+		actuate.initialize("http://localhost:8900/iportal", null, "", null, runReport);
+	  }
+	  
+	  function runReport() {
+		  try {
+		    var viewer = new actuate.Viewer("dashboardDiv" );
+		    viewer.setReportName('Public/BIRT and BIRT Studio Examples/Customer Dashboard.rptdesign');
+			viewer.setWidth(900);
+			var uioptions = new actuate.viewer.UIOptions();
+			uioptions.enableToolBar(true);
+			uioptions.enablePageNavigation(false);
+			viewer.setUIOptions(uioptions);
+			viewer.submit();
+			}catch(err) {
+	    		alert( err.message);
+		}
+	 }
+	 
+</script>
+</head>
+<body onload="dashboardInit()">
+<div id="dashboardDiv"></div>
+</body>
+</html>
